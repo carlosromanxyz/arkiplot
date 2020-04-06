@@ -37,8 +37,8 @@
 			
 			$query = new WP_Query( $args ); ?>
 			<?php if($query->have_posts()) : while($query->have_posts()) : $query->the_post(); $servicio++; ?>
-				<div class="col-lg-4 p-0">
-					<div class="p-4 p-lg-5 <?php if($servicio == 1 || $servicio == 4) : echo 'bg-purple'; elseif($servicio == 2 || $servicio == 5) : echo 'bg-warning'; else : echo 'bg-danger'; endif; ?> text-white">
+				<div class="col-xl-4 p-0">
+					<div class="p-4 p-xl-5 <?php if($servicio == 1 || $servicio == 4) : echo 'bg-purple'; elseif($servicio == 2 || $servicio == 5) : echo 'bg-warning'; else : echo 'bg-danger'; endif; ?> text-white">
 						<h6><?php _e( 'Servicio', 'arkiplot' ); ?></h6>
 						<h3 class="font-weight-bold mb-4"><?php the_title(); ?></h3>
 						<a href="<?php the_permalink(); ?>" class="btn border border-white px-5 text-white"><?php _e( 'Ver servicio', 'arkiplot' ); ?></a>
@@ -58,7 +58,7 @@
 				</div>
 			</div>
 			<?php if(have_rows('procesos_de_compra')) : while(have_rows('procesos_de_compra')) : the_row(); ?>
-				<div class="col-lg-3">
+				<div class="col-sm-6 col-xl-3">
 					<div class="process text-center position-relative">
 						<i class="<?php the_sub_field('icono_del_proceso') ?> mb-4 bg-white shadow rounded-circle"></i>
 						<p class="text-center"><?php the_sub_field('texto_del_proceso'); ?></p>

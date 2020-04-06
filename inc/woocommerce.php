@@ -226,7 +226,7 @@ if ( ! function_exists( 'arkiplot_woocommerce_cart_link' ) ) {
 			<?php $item_count_text = sprintf(_n( '%d producto', '%d productos', WC()->cart->get_cart_contents_count(), 'arkiplot' ), WC()->cart->get_cart_contents_count()); ?>
 			<i class="fas fa-shopping-cart mr-2"></i>
 			<span class="amount"><?php // echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span>
-			<span class="count"><?php echo esc_html( $item_count_text ); ?></span>
+			<span class="count d-none d-xl-inline-block"><?php echo esc_html( $item_count_text ); ?></span>
 		</a>
 		<?php
 	}

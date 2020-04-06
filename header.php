@@ -28,7 +28,7 @@
 		<section id="header-top" class="d-none d-lg-block bg-light border-bottom border-dark">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-5">
+					<div class="col-xl-5">
 						<div class="header-links d-flex justify-content-around">
 							<?php $count == 0; if(have_rows('telefonos', 'option')) : while(have_rows('telefonos', 'option')) : the_row(); $count++; ?>
 								<?php if($count == 1 ) : ?>
@@ -46,7 +46,7 @@
 							<?php endwhile; endif; ?>
 						</div>
 					</div>
-					<div class="col-lg-2 text-center">
+					<div class="col-xl-2 text-center">
 						<!-- Display custom logo -->
 						<?php // the_custom_logo(); this doesn't work for my purposes ?>
 						<?php $custom_logo_id = get_theme_mod( 'custom_logo' );
@@ -55,7 +55,7 @@
 							<img src="<?php echo $image[0]; ?>" alt="<?php bloginfo('name'); ?> - <?php bloginfo('description'); ?>" width="80px">
 						</a>
 					</div>
-					<div class="col-lg-5">
+					<div class="col-xl-5">
 						<div class="header-links d-flex justify-content-around">
 							<a href="#" class="text-dark hour pl-5 position-relative">
 								<span class="data d-block"><?php _e( 'Horario de Atención', 'arkiplot' ) ?></span>
@@ -151,9 +151,9 @@
 						<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" id="my-account-link" class="btn btn-secondary d-block d-lg-inline-block px-5 ml-0 ml-lg-2 mb-3 mb-lg-0 text-white">
 							<i class="fas fa-user"></i>
 							<?php if(is_user_logged_in()) : ?>
-								<span class="ml-2"><?php _e( 'Mi cuenta', 'arkiplot' ); ?></span>
+								<span class="ml-2 d-none d-xl-inline-block"><?php _e( 'Mi cuenta', 'arkiplot' ); ?></span>
 							<?php else : ?>
-								<span class="ml-2"><?php _e( 'Iniciar sesión', 'arkiplot' ); ?></span>
+								<span class="ml-2 d-none d-xl-inline-block"><?php _e( 'Iniciar sesión', 'arkiplot' ); ?></span>
 							<?php endif; ?>
 						</a>
 					</div>
