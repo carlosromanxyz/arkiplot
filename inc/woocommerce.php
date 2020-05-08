@@ -226,7 +226,7 @@ if ( ! function_exists( 'arkiplot_woocommerce_cart_link' ) ) {
 			<?php $item_count_text = sprintf(_n( '%d producto', '%d productos', WC()->cart->get_cart_contents_count(), 'arkiplot' ), WC()->cart->get_cart_contents_count()); ?>
 			<i class="fas fa-shopping-cart mr-2"></i>
 			<span class="amount"><?php // echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span>
-			<span class="count"><?php echo esc_html( $item_count_text ); ?></span>
+			<span class="count d-none d-xl-inline-block"><?php echo esc_html( $item_count_text ); ?></span>
 		</a>
 		<?php
 	}
@@ -280,9 +280,15 @@ function remove_product_description_heading() {
 add_filter( 'woocommerce_product_tabs', 'woo_reorder_tabs', 98 );
 function woo_reorder_tabs( $tabs ) {
 
-	$tabs['fancy_designer_tab']['priority'] = 1;		// Fancy Designer first
+	global $product;
+	
+	$designer = get_post_meta( get_the_ID(), 'fpd_product_settings', true );
+	// if( ! empty($designer) ) :
+		$tabs['fancy_designer_tab']['priority'] = 1;		// Fancy Designer first
+	// endif;
+	
 	// $tabs['reviews']['priority'] = 5;					// Reviews first
-	$tabs['description']['priority'] = 10;				// Description second
+	// $tabs['description']['priority'] = 10;				// Description second
 	// $tabs['additional_information']['priority'] = 15;	// Additional information third
 	return $tabs;
 }
@@ -293,19 +299,17 @@ function woo_reorder_tabs( $tabs ) {
 add_filter( 'woocommerce_product_tabs', 'woocommerce_fancy_designer_tab' );
 function woocommerce_fancy_designer_tab( $tabs ) {
 	
-	$designer = get_post_meta( get_the_ID(), 'fpd_product_settings' );
+	global $product;
+	$designer = get_post_custom_values( 'fpd_products' );
 	
-	if( $designer == '' ) :
-		return false;
-	else :
-		// Add the new tab
-		$tabs['fancy_designer_tab'] = array(
-			'title' 	=> __( 'Diseña tu producto', 'arkiplot' ),
-			'priority' 	=> 10,
-			'callback' 	=> 'woocommerce_fancy_designer_tab_content'
-		);
-		return $tabs;
-	endif;
+	// Add the new tab
+	$tabs['fancy_designer_tab'] = array(
+		'title' 	=> __( 'Diseña tu producto', 'arkiplot' ),
+		'priority' 	=> 10,
+		'callback' 	=> 'woocommerce_fancy_designer_tab_content'
+	);
+
+	return $tabs;
 }
 function woocommerce_fancy_designer_tab_content() { ?>
 	<div class="d-flex justify-content-center">
